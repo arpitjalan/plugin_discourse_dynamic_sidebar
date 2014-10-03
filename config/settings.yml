@@ -3,5 +3,5 @@ sidebar_settings:
     default: 'text'
     client: ''
   active:
-    default: true
+    default: false
     client: true
