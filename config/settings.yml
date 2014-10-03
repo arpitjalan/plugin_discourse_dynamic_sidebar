@@ -1,0 +1,7 @@
+sidebar_settings:
+  sidebar_content:
+    default: 'text'
+    client: ''
+  active:
+    default: true
+    client: true
