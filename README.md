@@ -16,6 +16,9 @@ The dynamic sidebar settings is on the site Settings > Sidebar Settings.
 
 ![](https://raw.githubusercontent.com/tcreativo/docs-images/master/scrshot1.png)
 
+- Result:
+
+![](https://raw.githubusercontent.com/tcreativo/docs-images/master/scrshot2.png)
 
 ## Installation
 
