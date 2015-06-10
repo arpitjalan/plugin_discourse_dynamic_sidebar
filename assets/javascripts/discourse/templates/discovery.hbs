@@ -6,37 +6,32 @@
 
 <div class='list-controls'>
   <div class="container">
-    {{outlet navigation-bar}}
+    {{outlet "navigation-bar"}}
   </div>
 </div>
 
-<div {{bind-attr class="loadingSpinner::hidden"}}>
-  <div class='spinner'>{{i18n loading}}</div>
-</div>
+{{conditional-loading-spinner condition=loading}}
 
-{{#if Discourse.SiteSettings.active}}
-  <div {{bind-attr class=":container :list-container :with-sidebar loadingSpinner:hidden"}}>
-{{else}}
-  <div {{bind-attr class=":container :list-container loadingSpinner:hidden"}}>
-{{/if}}
+<div {{bind-attr class=":container :list-container loading:hidden siteSettings.enable_sidebar:with-sidebar"}}>
   <div class="row">
     <div class="full-width">
       <div id='header-list-area'>
-        {{outlet header-list-container}}
+        {{outlet "header-list-container"}}
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="full-width">
       <div id='list-area'>
-        {{outlet list-container}}
+        {{plugin-outlet "discovery-list-container-top"}}
+        {{outlet "list-container"}}
       </div>
     </div>
   </div>
 </div>
-{{#if Discourse.SiteSettings.active}}
+
+{{#if siteSettings.enable_sidebar}}
   <div class='sidebar'>
-    {{{Discourse.SiteSettings.sidebar_content}}}
+    {{{siteSettings.sidebar_content}}}
   </div>
 {{/if}}
