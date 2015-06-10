@@ -2,6 +2,6 @@ sidebar_settings:
   sidebar_content:
     default: 'text'
     client: ''
-  active:
+  enable_sidebar:
     default: false
     client: true

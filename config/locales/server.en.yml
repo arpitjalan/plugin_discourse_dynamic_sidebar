@@ -1,4 +1,4 @@
 en:
   site_settings:
     sidebar_content: "html content for the sidebar"
-    active: "Show sidebar on the main screen"
+    enable_sidebar: "Show sidebar on the main screen"
