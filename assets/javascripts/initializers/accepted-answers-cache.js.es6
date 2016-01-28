@@ -35,12 +35,10 @@ export default {
         let solved_answers_html = "";
 
         $.each(solved_answers, function( index, value ) {
-          solved_answers_html += "<li>"
-          solved_answers_html += "<span>"+ value['username'] +"</span>"
-          solved_answers_html += "<span>"+ value['category_name'] +"</span>"
-          solved_answers_html += "<span>"+ value['title'] +"</span>"
-          solved_answers_html += "<span>"+ value['post_created_at'] +"</span>"
-          solved_answers_html += "</li>"
+          solved_answers_html += "<div class='solution_row'><span class='user_avatar'><img src='"+ value['user_avatar'] +"'></span>"
+          solved_answers_html += "<span class='title'><a href='"+ value['topic_url'] +"'>"+ value['topic_title'] +"</span></div>"
+          // solved_answers_html += "<span class='category_name'>"+ value['category_name'] +"</span>"
+          // solved_answers_html += "<span class='post_created_at'>"+ value['post_created_at'] +"</span></div>"
         });
         return solved_answers_html;
       }.property()

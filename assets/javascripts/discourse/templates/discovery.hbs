@@ -33,15 +33,15 @@
     {{{siteSettings.sidebar_content}}}
   </div>
 
-  {{#if solved_answer}}
-
-    <div class="solutions-container">
-      <div class="sidebar-title">Most Recent Solutions</div>
-      <div class="solutions-body"><ul>
-        {{{solved_answer}}}
-      </ul></div>
-    </div>
-
+  {{#if siteSettings.enable_solution_widget}}
+    {{#if solved_answer}}
+      <div class="solutions-container">
+        <div class="sidebar-title">Most Recent Solutions</div>
+        <div class="solutions-body">
+          {{{solved_answer}}}
+        </div>
+      </div>
+    {{/if}}
   {{/if}}
 
 {{/if}}

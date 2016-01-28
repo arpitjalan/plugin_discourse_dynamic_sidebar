@@ -18,13 +18,14 @@ after_initialize do
         custom_field = TopicCustomField.includes(:topic => :category)
                                  .joins("INNER JOIN posts ON posts.id = topic_custom_fields.value::int8")
                                  .joins("INNER JOIN users ON users.id = posts.user_id")
-                                 .select('topic_custom_fields.*, posts.id post_id, posts.created_at post_created_at, users.username username')
+                                 .select('topic_custom_fields.*, posts.id post_id, posts.created_at post_created_at, users.username username, users.id user_id')
                                  .where(name: 'accepted_answer_post_id')
                                  .limit(5)
                                  .order("DATE(topic_custom_fields.created_at)")
 
         custom_field.each_with_index do |field, index|
-          solved_answers[index] = {username: field.username, title: field.topic.title, category_name: field.topic.category.name, post_created_at: Time.at(field.post_created_at)}
+          user = User.find_by_id(field.user_id)
+          solved_answers[index] = {username: field.username, user_avatar: user.avatar_template_url.gsub("{size}", "25"), topic_title: field.topic.title, topic_url: field.topic.url, category_name: field.topic.category.name, post_created_at: field.post_created_at}
         end
         solved_answers
       }

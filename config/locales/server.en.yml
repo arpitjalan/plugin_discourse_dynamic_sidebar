@@ -2,3 +2,4 @@ en:
   site_settings:
     sidebar_content: "html content for the sidebar"
     enable_sidebar: "Show sidebar on the main screen"
+    enable_solution_widget: "Show solution widget on the main screen"

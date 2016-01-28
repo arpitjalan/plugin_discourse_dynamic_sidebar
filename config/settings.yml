@@ -5,3 +5,6 @@ sidebar_settings:
   enable_sidebar:
     default: false
     client: true
+  enable_solution_widget:
+    default: false
+    client: true
