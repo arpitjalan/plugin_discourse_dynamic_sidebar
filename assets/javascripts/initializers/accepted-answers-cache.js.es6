@@ -36,7 +36,7 @@ export default {
 
         $.each(solved_answers, function( index, value ) {
           solved_answers_html += "<div class='solution_row'><span class='user_avatar'><img src='"+ value['user_avatar'] +"'></span>"
-          solved_answers_html += "<span class='title'><a href='"+ value['topic_url'] +"'>"+ value['topic_title'] +"</span></div>"
+          solved_answers_html += "<span class='title'><a href='"+ value['topic_url'] +"'>"+ value['topic_title'] +"</a></span></div>"
           // solved_answers_html += "<span class='category_name'>"+ value['category_name'] +"</span>"
           // solved_answers_html += "<span class='post_created_at'>"+ value['post_created_at'] +"</span></div>"
         });
