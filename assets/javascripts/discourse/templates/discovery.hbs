@@ -31,17 +31,17 @@
 {{#if siteSettings.enable_sidebar}}
   <div class='sidebar'>
     {{{siteSettings.sidebar_content}}}
-  </div>
 
-  {{#if siteSettings.enable_solution_widget}}
-    {{#if solved_answer}}
-      <div class="solutions-container">
-        <div class="sidebar-title">Most Recent Solutions</div>
-        <div class="solutions-body">
-          {{{solved_answer}}}
+    {{#if siteSettings.enable_solution_widget}}
+      {{#if solved_answer}}
+        <div class="solutions-container">
+          <div class="sidebar-title">Most Recent Solutions</div>
+          <div class="solutions-body">
+            {{{solved_answer}}}
+          </div>
         </div>
-      </div>
+      {{/if}}
     {{/if}}
-  {{/if}}
+  </div>
 
 {{/if}}
