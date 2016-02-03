@@ -17,7 +17,7 @@ after_initialize do
         solved_answers = {}
         custom_field = TopicCustomField.includes(:topic)
                                  .joins("INNER JOIN topics ON topics.id = topic_custom_fields.topic_id")
-                                 .joins("INNER JOIN categories ON (categories.id = topics.category_id AND categories.read_restricted = false)")
+                                 .joins("INNER JOIN categories ON (categories.id = topics.category_id AND categories.read_restricted = false AND categories.suppress_from_homepage = false)")
                                  .joins("INNER JOIN posts ON posts.id = topic_custom_fields.value::int8")
                                  .joins("INNER JOIN users ON users.id = posts.user_id")
                                  .select('topic_custom_fields.*, posts.id post_id, posts.created_at post_created_at, users.username username, users.id user_id, topics.title topic_title, categories.name category_name')
