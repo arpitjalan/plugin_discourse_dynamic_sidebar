@@ -22,6 +22,7 @@ after_initialize do
                                  .joins("INNER JOIN users ON users.id = posts.user_id")
                                  .select('topic_custom_fields.*, posts.id post_id, posts.created_at post_created_at, users.username username, users.id user_id, topics.title topic_title, categories.name category_name')
                                  .where(name: 'accepted_answer_post_id')
+                                 .where('COALESCE(categories.parent_category_id, 0) NOT IN (13,14,15,22)')
                                  .order("topic_custom_fields.created_at DESC")
                                  .limit(5)
 
