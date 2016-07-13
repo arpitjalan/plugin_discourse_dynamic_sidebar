@@ -1,11 +1,12 @@
 import DiscoveryController from 'discourse/controllers/discovery';
 import DiscoveryRoute from 'discourse/routes/discovery';
 import CategoryList from "discourse/models/category-list";
+import PreloadStore from 'preload-store';
 
 export default {
   name: "accepted-answers-cache",
-  initialize() {
 
+  initialize() {
     CategoryList.reopenClass({
       list(store) {
         const getCategories = () => Discourse.ajax("/categories.json");
@@ -25,21 +26,22 @@ export default {
 
     DiscoveryRoute.reopen({
       model() {
-        return CategoryList.list(this.store).then(list => { return list; })
+        return CategoryList.list(this.store);
       }
-    })
+    });
 
     DiscoveryController.reopen({
       solved_answer: function() {
-        let solved_answers = this.get('model.solved_answers');
+        const solved_answers = this.get('model.solved_answers');
         let solved_answers_html = "";
 
-        $.each(solved_answers, function( index, value ) {
-          solved_answers_html += "<div class='solution_row'><span class='user_avatar'><img src='"+ value['user_avatar'] +"'></span>"
-          solved_answers_html += "<span class='title'><a href='"+ value['topic_url'] +"'>"+ value['topic_title'] +"</a></span></div>"
-          // solved_answers_html += "<span class='category_name'>"+ value['category_name'] +"</span>"
-          // solved_answers_html += "<span class='post_created_at'>"+ value['post_created_at'] +"</span></div>"
+        $.each(solved_answers, (index, value) => {
+          solved_answers_html += `<div class='solution_row'>
+              <span class='user_avatar'><img src='${value['user_avatar']}'></span>
+              <span class='title'><a href='${value['topic_url']}'>${value['topic_title']}</a></span>
+            </div>`;
         });
+
         return solved_answers_html;
       }.property()
     });
